@@ -23,6 +23,12 @@ As a user, I want to open this app every morning to view the latest updates from
 ## Proposed High-Level Design
 1. **APIs** built in Go that create and manage data—these will be used by the LLM to populate the database
 2. **Frontend** (technology-agnostic, focus on ease of use)
-3. **Database** using MongoDB
-4. **Message Queue** to asynchronously handle writes to MongoDB
+3. **Database** using PostgreSQL—chosen because the data structure is well-defined and consistent (news articles, agenda items, learning materials), making a relational database more suitable than a document-based approach
+4. **Message Queue** to asynchronously handle writes to PostgreSQL
+
+## Open Questions
+1. How will the LLM validate information it adds to the app?
+   - What validation mechanisms should be in place?
+   - Should there be human review before information is persisted?
+   - How do we ensure accuracy for technical content vs. news articles?
 
